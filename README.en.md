@@ -42,6 +42,8 @@ This is a GitHub package spec; it does not imply that the package is published t
 
 ### Install a local tarball
 
+You can [download the prebuilt plugin package](https://github.com/anosaki258-dot/deepseek-harness-mbcc-theme/raw/refs/heads/main/downloads/dsh-theme-mbcc-0.1.0.tgz) and [verify its SHA-256](./downloads/SHA256SUMS.txt). Paste the downloaded file's full path into Harness's plugin installation field.
+
 Build and package from the repository directory:
 
 ```sh

@@ -1,13 +1,22 @@
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const issues=[];
 async function scan(dir) {
   for(const row of await readdir(resolve(root,dir),{withFileTypes:true})) {
     const file=dir+'/'+row.name;
     if(row.isDirectory()) { if(!['node_modules','.git','private','test-results'].includes(row.name))await scan(file); continue; }
-    if(/\.(app|asar|key|pem|tgz)$|^\.env/.test(row.name))issues.push('Unexpected delivery file: '+file);
+    if(/\.(app|asar|key|pem)$|^\.env/.test(row.name))issues.push('Unexpected delivery file: '+file);
+    if(row.name.endsWith('.tgz')) {
+      if(file !== './downloads/dsh-theme-mbcc-0.1.0.tgz') issues.push('Unexpected package: '+file);
+      else {
+        const sum=createHash('sha256').update(await readFile(resolve(root,file))).digest('hex');
+        const recorded=await readFile(resolve(root,'downloads/SHA256SUMS.txt'),'utf8');
+        if(!recorded.startsWith(sum+'  '+row.name))issues.push('Download checksum mismatch');
+      }
+    }
     if(/\.(js|mjs|md|json|yml|css|svg)$/.test(file)) {
       const text=await readFile(resolve(root,file),'utf8');
       const forbidden=[/\/Users\/[a-zA-Z0-9_-]+\//,/gh[pousr]_[A-Za-z0-9]{24,}/,/github_pat_[A-Za-z0-9_]{24,}/,/-----BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY-----/];

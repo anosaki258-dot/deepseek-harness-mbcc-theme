@@ -42,7 +42,10 @@ github:anosaki258-dot/deepseek-harness-mbcc-theme
 
 ### 从本地 tarball 安装
 
-在仓库目录构建并打包：
+可直接[下载已构建的插件安装包](https://github.com/anosaki258-dot/deepseek-harness-mbcc-theme/raw/refs/heads/main/downloads/dsh-theme-mbcc-0.1.0.tgz)，[校验 SHA-256](./downloads/SHA256SUMS.txt)。下载后，将完整文件路径填入 Harness 的插件安装框。
+
+若要自己构建，在仓库目录执行：
+
 
 ```sh
 npm install
