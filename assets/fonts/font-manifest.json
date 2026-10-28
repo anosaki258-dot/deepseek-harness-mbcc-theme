@@ -1,0 +1,62 @@
+[
+  {
+    "file": "mbcc-text-medium.woff2",
+    "bytes": 4030040,
+    "sha256": "05c368328fcd394b2184a3adaf40286a1e8aef2784450a32eb4fc0402ad8c1be",
+    "source_family": "Noto Sans SC",
+    "retained_name_table_family": "Noto Sans SC Thin",
+    "static_weight": 500,
+    "cmap_codepoints": 27975,
+    "variable": false,
+    "license": "OFL-1.1",
+    "modifications": [
+      "Instantiated a static weight from the variable font.",
+      "Subsetted glyph coverage and encoded as WOFF2."
+    ]
+  },
+  {
+    "file": "mbcc-ui-semibold.woff2",
+    "bytes": 88116,
+    "sha256": "112e93a185a1de500c3bc28a3c05ab02fd11dc11a0d153c53456fc12acad8971",
+    "source_family": "Noto Sans SC",
+    "retained_name_table_family": "Noto Sans SC Thin",
+    "static_weight": 650,
+    "cmap_codepoints": 672,
+    "variable": false,
+    "license": "OFL-1.1",
+    "modifications": [
+      "Instantiated a static weight from the variable font.",
+      "Subsetted glyph coverage and encoded as WOFF2."
+    ]
+  },
+  {
+    "file": "mbcc-ui-bold.woff2",
+    "bytes": 85736,
+    "sha256": "478192044a7642a786835872c0395db16648692c6b1d81a41fe699b0566704c4",
+    "source_family": "Noto Sans SC",
+    "retained_name_table_family": "Noto Sans SC Thin",
+    "static_weight": 700,
+    "cmap_codepoints": 656,
+    "variable": false,
+    "license": "OFL-1.1",
+    "modifications": [
+      "Instantiated a static weight from the variable font.",
+      "Subsetted glyph coverage and encoded as WOFF2."
+    ]
+  },
+  {
+    "file": "mbcc-ui-black.woff2",
+    "bytes": 85676,
+    "sha256": "005e21a4d43fe0bf46691ac4b10cd7570362113a637e76d56e1d93d562d8c0ba",
+    "source_family": "Noto Sans SC",
+    "retained_name_table_family": "Noto Sans SC Thin",
+    "static_weight": 900,
+    "cmap_codepoints": 656,
+    "variable": false,
+    "license": "OFL-1.1",
+    "modifications": [
+      "Instantiated a static weight from the variable font.",
+      "Subsetted glyph coverage and encoded as WOFF2."
+    ]
+  }
+]

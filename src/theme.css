@@ -1,0 +1,1014 @@
+/*
+ * MBCC · a scoped visual compatibility layer for DeepSeek Harness 0.2.1-rc.3.
+ * Native width constants, content-size preferences, menus and focus stay native.
+ * Fonts and local-art data URLs are supplied by the plugin build/host.
+ */
+
+html[data-mbcc-active] {
+  color-scheme: dark;
+  --mbcc-ink: #dedad4;
+  --mbcc-muted: #a6a19d;
+  --mbcc-rule: #bdb4aa33;
+  --mbcc-crimson: #9c5059;
+  --mbcc-print: #71313b;
+}
+
+html[data-mbcc-active] body {
+  font-family: MBCCText, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-weight: 500;
+  color: var(--mbcc-ink);
+}
+
+html[data-mbcc-active] :is(.kB3qhq_root, .kB3qhq_panelRow, .kB3qhq_newSessionLabel, .F6Huca_entryTitle, ._fasra_title) {
+  font-family: MBCCUI, MBCCText, 'PingFang SC', sans-serif;
+  font-weight: 650;
+}
+
+html[data-mbcc-active] :is(.JZLxKW_input, ._markdown_1ypvv_5, .AkCqbG_bubble) {
+  font-family: MBCCText, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: var(--dsh-content-font-size, 14px) !important;
+  font-weight: 500;
+  color: #e0dcd7;
+  line-height: 1.85;
+}
+
+html[data-mbcc-active] ._markdown_1ypvv_5 :is(h1, h2, h3, h4) {
+  font-family: MBCCUI, 'Songti SC', Georgia, serif;
+  font-weight: 900;
+  color: #e7e2db;
+  letter-spacing: .025em;
+}
+
+html[data-mbcc-active] ._markdown_1ypvv_5 h2 {
+  border-left: 3px solid #96505a;
+  padding-left: .7em;
+}
+
+/* One canvas; its quiet central mask is denser than the outer cartography. */
+html[data-mbcc-active][data-mbcc-layout] .PIRFFq_frame {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box !important;
+  padding-top: 88px !important;
+  background: #0b0b0c !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .PIRFFq_frame::before {
+  content: '';
+  position: absolute;
+  inset: 88px 0 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #0c0b0b1a, #0b0b0b96 27%, #0b0b0bba 64%, #0b0b0b52),
+    linear-gradient(0deg, #0a0a0acc, transparent 42%),
+    var(--mbcc-map, none) center / cover no-repeat;
+  opacity: .9;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .PIRFFq_frame::after {
+  content: '';
+  position: absolute;
+  inset: 88px 0 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #4d20271c, transparent 23%, transparent 81%, #401b2112),
+    repeating-linear-gradient(0deg, #c8b9ac05 0 1px, transparent 1px 4px);
+}
+
+html[data-mbcc-active][data-mbcc-layout] :is(.PIRFFq_sidebarCol, .PIRFFq_centerCol, .PIRFFq_rightbarCol, .PIRFFq_bottomRow) {
+  position: relative;
+  z-index: 1;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .PIRFFq_handle {
+  top: 88px !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .PIRFFq_sidebarCol {
+  background: linear-gradient(90deg, #09090929, #0a0a0a61) !important;
+  border-right: 1px solid #b5aaa13d !important;
+  box-shadow: inset -1px 0 #0009;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .PIRFFq_centerCol {
+  box-sizing: border-box;
+  padding-top: 39px !important;
+  background: #0b0b0c40 !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .PIRFFq_centerCol::before {
+  content: 'CONTROL 02  /  局长工作终端';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 7px;
+  height: 26px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 15px;
+  border: 1px solid #ac64694d;
+  border-left: 3px solid #b77279;
+  background: linear-gradient(105deg, #69242fdf, #3d1d25e6 45%, #1c171bec 91%);
+  box-shadow: inset 0 1px #d394961c, inset 0 -1px #0008;
+  clip-path: polygon(0 0, 98% 0, 100% 100%, 0 100%);
+  color: #ddd0d0;
+  font: 700 10px/1 MBCCUI, sans-serif;
+  letter-spacing: .16em;
+  pointer-events: none;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .PIRFFq_rightbarCol {
+  background: #0b0b0c66 !important;
+  border-left: 1px solid #b5aaa13b !important;
+  box-shadow: inset 1px 0 #0008;
+}
+
+/* Fixed masthead: printed identity, registration strip and a city archive plate. */
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 90;
+  height: 88px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 10px 28px 10px 44px;
+  overflow: hidden;
+  border-bottom: 1px solid #80525a80;
+  background:
+    linear-gradient(100deg, #0b0b0cf2 3%, #111010ea 50%, #151213e6 78%),
+    var(--mbcc-map, none) center 41% / cover no-repeat;
+  box-shadow: 0 1px #000, 0 5px 18px #0006;
+  pointer-events: none;
+  -webkit-app-region: drag;
+}
+
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead::after {
+  content: '';
+  position: absolute;
+  inset: 5px 12px 5px 20px;
+  border: 1px solid #d1c2b326;
+  pointer-events: none;
+}
+
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .identity {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  min-width: 0;
+  max-width: 57%;
+}
+
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .identity > img {
+  width: 64px;
+  height: 64px;
+  flex: none;
+  object-fit: contain;
+  filter: grayscale(1) brightness(1.15);
+  opacity: .92;
+}
+
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .monogram {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  flex: none;
+  border: 1px solid #b2a59a75;
+  outline: 1px solid #b2a59a24;
+  outline-offset: 3px;
+  color: #d5cec4;
+  font: 900 19px/.95 MBCCUI, Georgia, serif;
+  letter-spacing: -.08em;
+  background: linear-gradient(135deg, #2521228c, #0d0b0c80);
+  box-shadow: inset 0 0 0 4px #080708b3;
+}
+
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .name {
+  min-width: 0;
+  color: #e0dcd6;
+  font: 900 clamp(15px, 1.72vw, 25px)/1.15 MBCCUI, Georgia, serif;
+  letter-spacing: .01em;
+  text-shadow: 0 1px #000;
+  white-space: nowrap;
+}
+
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .name small {
+  display: block;
+  margin-top: 9px;
+  color: #a8a19a;
+  font: 500 7px/1.3 ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  letter-spacing: .27em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .archive {
+  position: absolute;
+  z-index: 2;
+  left: 49%;
+  top: 31px;
+  padding-left: 16px;
+  border-left: 1px solid #b8a69b30;
+  color: #c4bab1;
+  font: 700 8px/1.4 ui-monospace, Consolas, monospace;
+  letter-spacing: .19em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .archive small {
+  display: block;
+  margin-top: 6px;
+  color: #8f8881;
+  font-size: 6px;
+  letter-spacing: .16em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .paper {
+  position: absolute;
+  z-index: 3;
+  left: 73%;
+  top: 23px;
+  padding: 6px 10px;
+  border: 1px solid #0b0a0aca;
+  transform: rotate(-3deg);
+  background: #beb8aecc;
+  box-shadow: 2px 3px #0008, 0 0 0 3px #d5cfc21a;
+  color: #302b29;
+  font: 700 7px/1.4 ui-monospace, Consolas, monospace;
+}
+
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .paper b {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  letter-spacing: .19em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .mbcc-registration {
+  position: absolute;
+  z-index: 1;
+  left: 76%;
+  top: -18px;
+  bottom: -18px;
+  width: 22px;
+  transform: rotate(9deg);
+  border-inline: 1px solid #ba686d47;
+  background: #792b35ad;
+  box-shadow: inset 4px 0 #45161c47;
+}
+
+html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .mbcc-mast-city {
+  position: absolute;
+  inset: 0 0 0 80%;
+  z-index: 0;
+  background: var(--mbcc-city, none) center / cover no-repeat;
+  filter: grayscale(.85) brightness(.5) contrast(1.1);
+  opacity: .8;
+  mask-image: linear-gradient(90deg, transparent, #000 22%);
+}
+
+/* Compact archival navigation, with no column-width overrides. */
+html[data-mbcc-active][data-mbcc-layout] .kB3qhq_root {
+  background: transparent !important;
+  --dsh-sidebar-inline-padding: 10px;
+}
+
+html[data-mbcc-active][data-mbcc-layout] :is(.kB3qhq_brand, .kB3qhq_logoRow) {
+  display: none !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kB3qhq_topStrip {
+  min-height: 17px !important;
+  height: 17px !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kB3qhq_newSession {
+  min-height: 36px !important;
+  margin: 7px 7px 12px !important;
+  border: 1px solid #a65f6a75 !important;
+  border-left: 3px solid #ba747e !important;
+  background: linear-gradient(110deg, #6b2834d9, #361d25eb) !important;
+  border-radius: 2px !important;
+  box-shadow: inset 0 1px #dca2a51f, 0 2px 6px #0004 !important;
+  color: #e3d4d4 !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kB3qhq_newSession:hover {
+  border-color: #bc8790a3 !important;
+  background: linear-gradient(110deg, #803542e6, #4e2531f0) !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kB3qhq_newSessionLabel {
+  font-weight: 700 !important;
+  letter-spacing: .07em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kB3qhq_panelList {
+  gap: 2px !important;
+  padding: 0 7px 10px !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kB3qhq_panelRow {
+  min-height: 32px !important;
+  padding-block: 5px !important;
+  color: #c9c3bd !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kB3qhq_regionArea {
+  position: relative;
+  padding-top: 13px !important;
+  border-top: 1px solid #b7a89d35;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kB3qhq_regionArea::before {
+  content: 'ARCHIVE / 会话档案';
+  display: block;
+  margin: 0 13px 12px;
+  color: #c6bfb6;
+  font: 700 11px/1.4 MBCCUI, 'Songti SC', Georgia, serif;
+  letter-spacing: .09em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kB3qhq_root :is([role=treeitem], [role=row])[aria-selected=true] {
+  border-left: 3px solid #ae6874 !important;
+  background: linear-gradient(90deg, #6b313a80, #252125b3) !important;
+  box-shadow: inset 0 1px #c99ba015, inset 0 -1px #0006;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kB3qhq_footArea {
+  position: relative;
+  padding-top: 24px !important;
+  border-top: 1px solid #b5a89e33;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kB3qhq_footArea::before {
+  content: 'MINOS BUREAU / PERSONAL TERMINAL';
+  position: absolute;
+  top: 7px;
+  left: 5px;
+  color: #969087;
+  font: 500 6px/1.4 ui-monospace, Consolas, monospace;
+  letter-spacing: .1em;
+}
+
+/* Conversation: the native hero remains one flexible child of the composer. */
+html[data-mbcc-active][data-mbcc-layout] :is(.kiGsTW_root, .kiGsTW_body, .kiGsTW_scrollBody, .tnXGgG_root, .tnXGgG_frame) {
+  background: transparent !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kiGsTW_header {
+  border-bottom-color: #b0a29526;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kiGsTW_root[data-phase=hero] .kiGsTW_scrollBody {
+  justify-content: flex-start !important;
+  min-height: 0 !important;
+  overflow-x: clip !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kiGsTW_root[data-phase=hero] .kiGsTW_composerSeat {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kiGsTW_root[data-phase=hero] .kiGsTW_composerHero {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  align-self: stretch !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 18px 18px !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] ._8tPydW_root {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  gap: 22px;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 20px 10px 10px !important;
+  box-sizing: border-box !important;
+  overflow: hidden;
+}
+
+html[data-mbcc-active][data-mbcc-layout] ._8tPydW_stack {
+  max-width: none !important;
+  min-height: 0;
+  gap: 18px !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] :is(._8tPydW_fishHitbox, ._8tPydW_previewBadge) {
+  display: none !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] ._8tPydW_titleGroup {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+  width: 100%;
+}
+
+html[data-mbcc-active][data-mbcc-layout] ._8tPydW_titleGroup::before {
+  content: 'DIRECTOR WORKSTATION / SESSION ARCHIVE';
+  color: #9f9691;
+  font: 500 8px/1.6 ui-monospace, Consolas, monospace;
+  letter-spacing: .18em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] ._8tPydW_headline {
+  display: block !important;
+  position: relative;
+  padding: 0 0 16px !important;
+  border-bottom: 1px solid #b6aaa03b;
+  text-align: left !important;
+  font-size: 0 !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] ._8tPydW_headline::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 43px;
+  height: 3px;
+  background: #9f5864;
+}
+
+html[data-mbcc-active][data-mbcc-layout] ._8tPydW_headline::after {
+  content: '局长工作终端';
+  font: 900 clamp(23px, 2.5vw, 34px)/1.4 MBCCUI, 'Songti SC', Georgia, serif;
+  color: #e5e0d8;
+  letter-spacing: .07em;
+  text-shadow: 0 1px #000;
+}
+
+html[data-mbcc-active][data-mbcc-layout] ._8tPydW_body::before {
+  content: '暂无会话记录\A输入任务指令，开始新的会话。';
+  display: block;
+  box-sizing: border-box;
+  padding: 13px 17px;
+  border-block: 1px solid #b6a59e26;
+  border-left: 3px solid #9f5a67;
+  background: linear-gradient(105deg, #2d2028b8, #1a191bd9);
+  color: #bdb4af;
+  font: 500 12px/1.9 MBCCText, sans-serif;
+  white-space: pre-line;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .kiGsTW_heroWorkspaceRow {
+  flex: none !important;
+  margin-bottom: 7px !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .JZLxKW_root {
+  flex-shrink: 0 !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .JZLxKW_card {
+  position: relative;
+  border-radius: 3px !important;
+  border: 1px solid #aa97906e !important;
+  border-top: 2px solid #a67a8380 !important;
+  background: linear-gradient(115deg, #202021f5, #131214f7) !important;
+  box-shadow: inset 0 1px #d4bfb01a, 0 0 0 3px #07070780, 0 8px 25px #0005 !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .JZLxKW_card::before {
+  content: 'DIRECTOR INPUT / 01';
+  position: absolute;
+  right: 8px;
+  top: -7px;
+  padding-inline: 5px;
+  background: #211c20;
+  color: #b19b9f;
+  font: 500 7px/1.4 ui-monospace, Consolas, monospace;
+  letter-spacing: .1em;
+  pointer-events: none;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .JZLxKW_primary {
+  border: 1px solid #b578838a !important;
+  background: linear-gradient(#85404de8, #522631f2) !important;
+  color: #eee0df !important;
+  box-shadow: inset 0 1px #dfa2a529;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .JZLxKW_primary:disabled {
+  border-color: #79646b66 !important;
+  background: #33292f !important;
+  color: #a79ba2 !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .AkCqbG_bubble {
+  border: 1px solid #b4a59d2e !important;
+  border-left: 2px solid #9a65716e !important;
+  background: linear-gradient(115deg, #242023f5, #1b1a1df7) !important;
+  box-shadow: inset 0 1px #d0bbae0b, 0 3px 9px #0003;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .md-code-block {
+  border: 1px solid #b4a69b3b !important;
+  background: #111011 !important;
+  box-shadow: 0 3px 12px #0004;
+}
+
+/* Printed dossier ornaments. Every piece is noninteractive. */
+html[data-mbcc-active][data-mbcc-layout] .mbcc-sidebar-dossier {
+  position: absolute;
+  bottom: 20px;
+  left: 14px;
+  right: 14px;
+  height: 170px;
+  box-sizing: border-box;
+  overflow: hidden;
+  pointer-events: none;
+  border: 1px solid #aa99915c;
+  border-top: 2px solid #9a5d69;
+  background:
+    linear-gradient(115deg, #201a1de8, #121112eb),
+    var(--mbcc-map, none) center / cover;
+  box-shadow: 2px 3px #0007, -2px -2px #b9a99412;
+  transform: rotate(-.7deg);
+}
+
+html[data-mbcc-active][data-mbcc-layout] .mbcc-sidebar-dossier[hidden] {
+  display: none !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .mbcc-sidebar-dossier::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 14px;
+  width: 32px;
+  height: 13px;
+  transform: rotate(-10deg);
+  border: 1px solid #c1b29a35;
+  background: #a29c885c;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .mbcc-sidebar-dossier::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 31px;
+  width: 100px;
+  height: 100px;
+  background: var(--mbcc-seal, none) center / contain no-repeat;
+  opacity: .09;
+  filter: grayscale(1);
+}
+
+html[data-mbcc-active][data-mbcc-layout] .mbcc-sidebar-dossier > img {
+  position: absolute;
+  top: 34px;
+  left: 12%;
+  width: 76%;
+  height: 70px;
+  object-fit: contain;
+  opacity: .94;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .mbcc-sidebar-dossier > strong {
+  position: absolute;
+  top: 46px;
+  left: 15px;
+  color: #d3c8bd;
+  font: 900 34px/1 MBCCUI, Georgia, serif;
+  letter-spacing: -.025em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .dossier-code {
+  margin: 13px 12px 0;
+  color: #b09a9e;
+  font: 500 8px/1 ui-monospace, Consolas, monospace;
+  letter-spacing: .16em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .dossier-caption {
+  position: absolute;
+  left: 13px;
+  bottom: 26px;
+  color: #c8c0b5;
+  font: 700 12px/1.4 MBCCUI, 'Songti SC', Georgia, serif;
+  letter-spacing: .065em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .dossier-caption small {
+  display: block;
+  margin-top: 4px;
+  color: #908980;
+  font: 500 5.5px/1.4 ui-monospace, Consolas, monospace;
+  letter-spacing: .12em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] :is(.dossier-barcode, .hero-file-code) {
+  height: 11px;
+  background: repeating-linear-gradient(90deg, #ac818780 0 1px, transparent 1px 3px, #ac818780 3px 5px, transparent 5px 6px, #ac818780 6px 7px, transparent 7px 10px);
+  opacity: .44;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .dossier-barcode {
+  position: absolute;
+  left: 13px;
+  right: 13px;
+  bottom: 8px;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .mbcc-hero-dossier {
+  position: relative;
+  isolation: isolate;
+  flex: 1 1 auto;
+  min-height: 125px;
+  max-height: 240px;
+  margin: 0 0 10px;
+  overflow: hidden;
+  pointer-events: none;
+  border: 1px solid #a58a8e5c;
+  background: linear-gradient(110deg, #1c1519d9, #121112e8);
+  box-shadow: inset 0 0 28px #0004, 3px 4px #0004;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .mbcc-hero-dossier::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  z-index: -1;
+  border: 1px solid #c0a6a02e;
+  background: var(--mbcc-map, none) center / cover no-repeat;
+  opacity: .25;
+  filter: grayscale(1) brightness(.65);
+}
+
+html[data-mbcc-active][data-mbcc-layout] .mbcc-hero-dossier::after {
+  content: '';
+  position: absolute;
+  right: 24%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  z-index: -1;
+  transform: rotate(9deg);
+  background: #b1828938;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .hero-file-label {
+  position: absolute;
+  left: 17px;
+  top: 14px;
+  color: #b7999e;
+  font: 500 9px/1.2 ui-monospace, Consolas, monospace;
+  letter-spacing: .18em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .hero-file-label span {
+  margin-left: 12px;
+  padding: 2px 4px;
+  border: 1px solid #b6788266;
+  color: #c3a2a5;
+  font-size: 8px;
+  letter-spacing: .1em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .hero-file-seal {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  width: clamp(120px, 17vw, 210px);
+  height: auto;
+  transform: translateY(-50%) rotate(-8deg);
+  z-index: -1;
+  opacity: .13;
+  filter: grayscale(1) brightness(1.25);
+}
+
+html[data-mbcc-active][data-mbcc-layout] .hero-file-monogram {
+  font: 900 clamp(120px,17vw,210px)/1 Georgia,serif;
+  color: #a79b9d;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .hero-file-copy {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-28%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 77%;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .hero-file-copy small {
+  color: #9e8e91;
+  font: 500 8px/1.4 ui-monospace, Consolas, monospace;
+  letter-spacing: .22em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .hero-file-copy strong {
+  color: #d7cec3;
+  font: 900 clamp(19px, 2.3vw, 29px)/1.35 MBCCUI, 'Songti SC', Georgia, serif;
+  letter-spacing: .09em;
+  text-shadow: 0 1px #000;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .hero-file-copy span {
+  color: #9b8e8e;
+  font: 500 9px/1.6 MBCCText, sans-serif;
+  letter-spacing: .035em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .hero-file-code {
+  position: absolute;
+  left: 24px;
+  bottom: 17px;
+  width: 84px;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .hero-file-edge {
+  position: absolute;
+  right: 12px;
+  bottom: 11px;
+  color: #8f8186;
+  font: 500 6px/1.4 ui-monospace, Consolas, monospace;
+  letter-spacing: .16em;
+}
+
+/* Tool guide: photo appears only on its spare guide seat, not over real tools. */
+html[data-mbcc-active][data-mbcc-layout] :is(.Dv5QdW_panel, .Dv5QdW_panelBody) {
+  background: transparent !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .Dv5QdW_tabBody {
+  background: #0d0b0cd9 !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .Dv5QdW_panel[data-sidebar-right-panel=fullscreen] {
+  background: #0d0c0d !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .Dv5QdW_panel[data-sidebar-right-panel=push][data-sidebar-right-open]:has(.F6Huca_guide)::before {
+  content: 'FIELD RECORD / MBCC';
+  display: block;
+  flex: none;
+  height: clamp(125px, 20vh, 185px);
+  box-sizing: border-box;
+  margin: 10px 12px 7px;
+  padding-top: 3px;
+  border-bottom: 1px solid #b8a2993b;
+  background: var(--mbcc-field, none) center 22px / auto calc(100% - 29px) no-repeat;
+  color: #a99d94;
+  font: 500 7px/1.4 ui-monospace, Consolas, monospace;
+  letter-spacing: .2em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .F6Huca_guide {
+  position: relative;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px !important;
+  gap: 9px !important;
+  background: transparent !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .F6Huca_guide::before {
+  content: '工具与资源 / OPERATIONS';
+  margin-bottom: 2px;
+  padding: 6px 0 12px;
+  border-bottom: 1px solid #b69f984d;
+  color: #d8d0c7;
+  font: 700 12px/1.5 MBCCUI, 'Songti SC', Georgia, serif;
+  letter-spacing: .05em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .F6Huca_hero {
+  display: none !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] :is(.F6Huca_entry, ._fasra_entry) {
+  min-height: 52px !important;
+  border-radius: 2px !important;
+  border: 1px solid #b4a29b50 !important;
+  border-left: 2px solid #94616d6b !important;
+  background: linear-gradient(115deg, #262125e8, #19171aef) !important;
+  box-shadow: inset 0 1px #d9c1b016, 0 3px 8px #0004 !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] :is(.F6Huca_entry, ._fasra_entry):hover {
+  border-color: #b8828da1 !important;
+  background: linear-gradient(115deg, #35272fe8, #231d23f2) !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] :is(.F6Huca_entryTitle, ._fasra_title) {
+  color: #dcd4cc !important;
+  letter-spacing: .025em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] :is(.F6Huca_entryDescription, ._fasra_description) {
+  color: #a79b97 !important;
+}
+
+html[data-mbcc-active][data-mbcc-layout] :is(.F6Huca_entryIcon, ._fasra_icon) {
+  color: #bfb0a7 !important;
+  filter: saturate(.35);
+}
+
+html[data-mbcc-active][data-mbcc-layout] .mbcc-guide-dossier {
+  position: relative;
+  isolation: isolate;
+  flex: 0 1 140px;
+  min-height: 100px;
+  max-height: 155px;
+  margin-top: auto;
+  overflow: hidden;
+  border: 1px solid #ac96935c;
+  border-top: 2px solid #985d6a;
+  background: #151214;
+  box-shadow: 3px 3px #0006;
+  pointer-events: none;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .mbcc-guide-dossier .city-print {
+  position: absolute;
+  inset: 4px;
+  z-index: -1;
+  background: var(--mbcc-city, none) center / cover no-repeat;
+  filter: saturate(.35) brightness(.6) contrast(1.12);
+}
+
+html[data-mbcc-active][data-mbcc-layout] .mbcc-guide-dossier::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #171114e6, #100d1133 95%), linear-gradient(0deg, #120e14d9, transparent 85%);
+}
+
+html[data-mbcc-active][data-mbcc-layout] .city-caption {
+  padding: 14px 12px;
+  color: #d0c3bc;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .city-caption span {
+  display: block;
+  color: #b4a19b;
+  font: 500 8px/1.5 MBCCText, sans-serif;
+  letter-spacing: .08em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .city-caption b {
+  display: block;
+  margin-top: 7px;
+  font: 900 17px/1.3 MBCCUI, 'Songti SC', Georgia, serif;
+  letter-spacing: .04em;
+}
+
+html[data-mbcc-active][data-mbcc-layout] .mbcc-guide-dossier > small {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  color: #af989b;
+  font: 500 7px/1.3 ui-monospace, Consolas, monospace;
+  letter-spacing: .2em;
+}
+
+/* Narrow and short windows reduce ornament before reducing usable workspace. */
+@media (max-width: 1200px) {
+  html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .archive {
+    display: none;
+  }
+  html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .identity {
+    max-width: 67%;
+  }
+}
+
+@media (max-width: 900px) {
+  html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .paper {
+    display: none;
+  }
+  html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .name {
+    font-size: 17px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .name small {
+    font-size: 6px;
+    letter-spacing: .14em;
+  }
+  html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .identity > img {
+    width: 54px;
+    height: 54px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .hero-file-copy {
+    left: 16px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .hero-file-copy strong {
+    font-size: 21px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .hero-file-copy small {
+    font-size: 7px;
+    letter-spacing: .1em;
+  }
+}
+
+@media (max-width: 750px) {
+  html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead {
+    height: 76px;
+    padding-left: 24px;
+    padding-right: 16px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .identity {
+    max-width: 100%;
+    gap: 12px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .name {
+    font-size: 15px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .monogram {
+    width: 46px;
+    height: 46px;
+    font-size: 15px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] #mbcc-masthead .mbcc-registration {
+    display: none;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .PIRFFq_frame {
+    padding-top: 76px !important;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .PIRFFq_handle {
+    top: 76px !important;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .PIRFFq_frame::before,
+  html[data-mbcc-active][data-mbcc-layout] .PIRFFq_frame::after {
+    inset-block-start: 76px;
+  }
+}
+
+@media (max-height: 760px) {
+  html[data-mbcc-active][data-mbcc-layout] ._8tPydW_root {
+    gap: 12px;
+    padding-top: 10px !important;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .mbcc-hero-dossier {
+    min-height: 105px;
+    max-height: 170px;
+    margin-bottom: 4px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .hero-file-copy {
+    gap: 6px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .hero-file-copy strong {
+    font-size: 22px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .hero-file-label {
+    top: 9px;
+    font-size: 7px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .hero-file-code {
+    bottom: 10px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .mbcc-guide-dossier {
+    flex-basis: 100px;
+    min-height: 80px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .mbcc-sidebar-dossier {
+    height: 150px;
+    bottom: 12px;
+  }
+}
+
+@media (max-height: 650px) {
+  html[data-mbcc-active][data-mbcc-layout] :is(.mbcc-hero-dossier, .mbcc-guide-dossier, .mbcc-sidebar-dossier) {
+    display: none;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .Dv5QdW_panel[data-sidebar-right-panel=push][data-sidebar-right-open]:has(.F6Huca_guide)::before {
+    height: 100px;
+  }
+  html[data-mbcc-active][data-mbcc-layout] ._8tPydW_headline::after {
+    font-size: 24px;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  html[data-mbcc-active][data-mbcc-layout] .AkCqbG_bubble {
+    background: #211c20 !important;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .JZLxKW_card {
+    background: #1a171a !important;
+  }
+  html[data-mbcc-active][data-mbcc-layout] .Dv5QdW_tabBody {
+    background: #111011 !important;
+  }
+}
